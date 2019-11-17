@@ -42,7 +42,7 @@ class ParseCloudFunction extends ParseObject {
   /// Executes a cloud function that returns a ParseObject type
   ///
   /// To add the parameters, create an object and call [set](value to set)
-  Future<ParseResponse> executeObjectFunction<T extends ParseObject>(
+  Future<ParseResponse> executeObjectFunction<T extends ParseObject>(T object,
       {Map<String, dynamic> parameters, Map<String, String> headers}) async {
     final String uri = '${_client.data.serverUrl}$_path';
     if (parameters != null) {
@@ -50,7 +50,7 @@ class ParseCloudFunction extends ParseObject {
     }
     final Response result = await _client.post(uri,
         headers: headers, body: json.encode(_getObjectData()));
-    return handleResponse<T>(this, result, ParseApiRQ.executeObjectionFunction,
-        _debug, parseClassName);
+    return handleResponse<T>(object, result,
+        ParseApiRQ.executeObjectionFunction, _debug, parseClassName);
   }
 }

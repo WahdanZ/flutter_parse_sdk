@@ -221,7 +221,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> initUser() async {
     // All return type ParseUser except all
     ParseUser user =
-    ParseUser('RE9fU360lishjFKC5dLZS4Zwm', 'password', 'test@facebook.com');
+        ParseUser('RE9fU360lishjFKC5dLZS4Zwm', 'password', 'test@facebook.com');
 
     /// Sign-up
     /*ParseResponse response = await user.signUp();
@@ -303,7 +303,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> function() async {
     final ParseCloudFunction function = ParseCloudFunction('hello');
     final ParseResponse result =
-        await function.executeObjectFunction<ParseObject>();
+        await function.executeObjectFunction<ParseObject>(null);
     if (result.success) {
       if (result.result is ParseObject) {
         final ParseObject parseObject = result.result;
@@ -375,7 +375,6 @@ class _MyAppState extends State<MyApp> {
     dietPlanRepo ??= DietPlanRepository.init(await getDB());
     userRepo ??= UserRepository.init(await getDB());
   }
-
 
   /// Available options:
   /// SharedPreferences - Not secure but will work with older versions of SDK - CoreStoreSharedPrefsImpl
